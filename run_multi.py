@@ -135,7 +135,7 @@ def main(args_file=None):
     set_seed(training_args.seed)
     
     # Set project name
-    os.environ["WANDB_PROJECT"] = "question-generation"
+    os.environ["WANDB_PROJECT"] = "question-generation-ft"
 
     # Load pretrained model and tokenizer
     #
@@ -184,7 +184,7 @@ def main(args_file=None):
     )
 
     # disable wandb console logs
-    #logging.getLogger('wandb.run_manager').setLevel(logging.WARNING)
+    logging.getLogger('wandb.run_manager').setLevel(logging.WARNING)
     
     
     # Training
