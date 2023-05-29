@@ -184,7 +184,7 @@ def main(args_file=None):
     )
 
     # disable wandb console logs
-    logging.getLogger('wandb.run_manager').setLevel(logging.WARNING)
+    logging.getLogger('wandb.run_manager').setLevel(logging.INFO)
     
     
     # Training
