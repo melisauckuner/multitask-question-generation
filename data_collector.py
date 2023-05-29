@@ -38,10 +38,9 @@ class T2TDataCollator():
             A dictionary of tensors
         """
         
-        input_ids = torch.stack([example['source_ids'] for example in batch if 'source_ids' in example])
-        target_ids = torch.stack([example['target_ids'] for example in batch if 'target_ids' in example])
-        attention_mask = torch.stack([example['attention_mask'] for example in batch if 'attention_mask' in example])
-
+        input_ids = torch.stack([example['source_ids'] for example in batch])
+        target_ids = torch.stack([example['target_ids'] for example in batch])
+        attention_mask = torch.stack([example['attention_mask'] for example in batch])
 
         pad_token_id = self.tokenizer.pad_token_id
 
