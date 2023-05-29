@@ -165,6 +165,8 @@ def main(args_file=None):
     train_dataset = torch.load(data_args.train_file_path) if training_args.do_train else None
     valid_dataset = torch.load(data_args.valid_file_path) if training_args.do_eval else None 
     
+    print(train_dataset)
+    
     logger.info('finished loading dataset')
 
     # Initialize data_collator
