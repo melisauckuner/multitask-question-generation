@@ -44,7 +44,7 @@ class ModelArguments:
     """
 
     model_name_or_path: str = field(
-        default="google/mt5-small",
+        default="google/mt5-large",
         metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
     )
     model_type: str = field(default="mt5",metadata={"help": "One of 'mt5'"})

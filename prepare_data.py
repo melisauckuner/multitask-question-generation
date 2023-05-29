@@ -109,7 +109,7 @@ def main():
         level=logging.INFO
     )
 
-    tokenizer = MT5Tokenizer.from_pretrained("google/mt5-small")
+    tokenizer = MT5Tokenizer.from_pretrained("google/mt5-large")
 
     
     tokenizer.add_tokens(['<sep>', '<hl>'])
@@ -131,15 +131,18 @@ def main():
     train_dataset.set_format(type='torch', columns=columns)
     valid_dataset.set_format(type='torch', columns=columns)
 
+    os.mkdir("/kaggle/working/data")
+    os.mkdir("/kaggle/working/mt5_qg_tokenizer")
+    
     if data_args.train_file_name is None:
         train_file_name = "train_data_multitask_mt5.pt"
-        train_path = os.path.join("data", train_file_name)
+        train_path = os.path.join("/kaggle/working/data", train_file_name)
 
         valid_file_name = "valid_data_multitask_mt5.pt"
-        valid_path = os.path.join("data", valid_file_name)
+        valid_path = os.path.join("/kaggle/working/data", valid_file_name)
     else:
-        train_path = os.path.join("data", data_args.train_file_name)
-        valid_path = os.path.join("data", data_args.valid_file_name)
+        train_path = os.path.join("/kaggle/working/data", data_args.train_file_name)
+        valid_path = os.path.join("/kaggle/working/data", data_args.valid_file_name)
     
     torch.save(train_dataset, train_path)
     logger.info(f"saved train dataset at {train_path}")
@@ -147,7 +150,7 @@ def main():
     torch.save(valid_dataset, valid_path)
     logger.info(f"saved validation dataset at {valid_path}")
     
-    tokenizer_path = "mt5_qg_tokenizer"
+    tokenizer_path = "/kaggle/working/mt5_qg_tokenizer"
     if not os.path.exists(tokenizer_path):
         os.mkdir(tokenizer_path)
     tokenizer.save_pretrained(tokenizer_path)
