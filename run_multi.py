@@ -180,7 +180,8 @@ def main(args_file=None):
         train_dataset=train_dataset,
         eval_dataset=valid_dataset,
         data_collator=data_collator,
-        label_smoothing=model_args.label_smoothing
+        label_smoothing=model_args.label_smoothing,
+        remove_unused_columns=False
     )
 
     # disable wandb console logs
